@@ -26,24 +26,35 @@ class Dashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromRGBO(255, 27, 117, 153),
-        title: const Text(
-          'Campeões League of Legends',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 30,
-            fontWeight: FontWeight.bold,
+        backgroundColor: const Color.fromARGB(226, 13, 75, 75),
+        title: const Center(
+          child: Text(
+            'Campeões League of Legends',
+            style: TextStyle(
+              color: Color.fromARGB(251, 254, 141, 1),
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ),
+      backgroundColor: Color.fromARGB(255, 215, 238, 238),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.network(
-                'https://wallpapercave.com/wp/wp8709839.jpg'),
+            Image.network('https://wallpapercave.com/wp/wp8709839.jpg'),
+            const SizedBox(height: 16), // Adiciona um espaço entre a imagem e o texto
+            const Text(
+              'Explore e adicione campeões e suas características.',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.normal,
+              ),
+            ),
+            const SizedBox(height: 16), // Adiciona um espaço entre o texto e o botão
             GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -57,21 +68,22 @@ class Dashboard extends StatelessWidget {
                 height: 140,
                 width: 120,
                 padding: const EdgeInsets.all(8.0),
-                color: Color.fromARGB(255, 27, 117, 153),
+                color: Color.fromARGB(226, 13, 75, 75),
                 child: const Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  // crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Icon(
-                      Icons.people,
-                      color: Colors.white,
-                      size: 30,
+                      Icons.groups_2,
+                      color: Color.fromARGB(251, 254, 141, 1),
+                      size: 70,
                     ),
                     Text(
                       'Campeões',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Color.fromARGB(251, 254, 141, 1),
                         fontSize: 20,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ],
@@ -114,11 +126,11 @@ class _ListaCampeoesState extends State<ListaCampeoes> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromRGBO(255, 27, 117, 153),
+        backgroundColor: const Color.fromARGB(226, 13, 75, 75),
         title: const Text(
           'Campeões',
           style: TextStyle(
-            color: Colors.white,
+            color: Color.fromARGB(251, 254, 141, 1),
             fontSize: 30,
             fontWeight: FontWeight.bold,
           ),
@@ -153,7 +165,7 @@ class _ListaCampeoesState extends State<ListaCampeoes> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color.fromRGBO(255, 27, 117, 153),
+        backgroundColor: const Color.fromARGB(226, 13, 75, 75),
         onPressed: () {
           Navigator.push(
             context,
@@ -164,7 +176,7 @@ class _ListaCampeoesState extends State<ListaCampeoes> {
         },
         child: const Icon(
           Icons.add,
-          color: Colors.white,
+          color: Color.fromARGB(251, 254, 141, 1),
           size: 35.0,
         ),
       ),
@@ -181,75 +193,119 @@ class FormularioCampeoes extends StatefulWidget {
 
 class _FormularioCampeoesState extends State<FormularioCampeoes> {
   final TextEditingController _controladorNome = TextEditingController();
-  final TextEditingController _controladorNumeroConta = TextEditingController();
+  final TextEditingController _controladorRaca = TextEditingController();
+  final TextEditingController _controladorClasse = TextEditingController();
+  final TextEditingController _controladorRegiao = TextEditingController();
+  final TextEditingController _controladorDano = TextEditingController();
+  final TextEditingController _controladorUltimate = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromRGBO(0, 56, 168, 1.0),
+        backgroundColor: Color.fromARGB(226, 13, 75, 75),
         title: const Text(
-          'Novo Campeao',
+          'Novo Campeão',
           style: TextStyle(
-            color: Colors.white,
+            color: Color.fromARGB(251, 254, 141, 1),
             fontSize: 30,
             fontWeight: FontWeight.bold,
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: _controladorNome,
-              decoration: const InputDecoration(
-                labelText: 'Nome Completo',
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              TextField(
+                controller: _controladorNome,
+                decoration: const InputDecoration(
+                  labelText: 'Nome',
+                ),
+                style: const TextStyle(
+                  fontSize: 24.0,
+                ),
               ),
-              style: const TextStyle(
-                fontSize: 24.0,
+              TextField(
+                controller: _controladorRaca,
+                decoration: const InputDecoration(
+                  labelText: 'Raça',
+                ),
+                style: const TextStyle(
+                  fontSize: 24.0,
+                ),
               ),
-            ),
-            TextField(
-              controller: _controladorNumeroConta,
-              decoration: const InputDecoration(
-                labelText: 'Número da Conta',
+              TextField(
+                controller: _controladorClasse,
+                decoration: const InputDecoration(
+                  labelText: 'Classe',
+                ),
+                style: const TextStyle(
+                  fontSize: 24.0,
+                ),
               ),
-              style: const TextStyle(
-                fontSize: 24.0,
+              TextField(
+                controller: _controladorRegiao,
+                decoration: const InputDecoration(
+                  labelText: 'Região',
+                ),
+                style: const TextStyle(
+                  fontSize: 24.0,
+                ),
               ),
-              keyboardType: TextInputType.number,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: SizedBox(
-                width: double.maxFinite,
-                child: ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(
-                      const Color.fromRGBO(0, 56, 168, 1.0),
+              TextField(
+                controller: _controladorDano,
+                decoration: const InputDecoration(
+                  labelText: 'Dano',
+                ),
+                style: const TextStyle(
+                  fontSize: 24.0,
+                ),
+              ),
+              TextField(
+                controller: _controladorUltimate,
+                decoration: const InputDecoration(
+                  labelText: 'Ultimate',
+                ),
+                style: const TextStyle(
+                  fontSize: 24.0,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: SizedBox(
+                  width: double.maxFinite,
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(
+                        const Color.fromARGB(226, 13, 75, 75),
+                      ),
                     ),
-                  ),
-                  onPressed: () {
-                    final String nome = _controladorNome.text;
-                    final int? numeroConta =
-                        int.tryParse(_controladorNumeroConta.text);
-                    final Campeao novoCampeao = Campeao(0, nome, numeroConta);
-                    save(novoCampeao).then((id) {
-                      Navigator.pop(context, novoCampeao);
-                    });
-                  },
-                  child: const Text(
-                    'Salvar',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20.0,
+                    onPressed: () {
+                      final String nome = _controladorNome.text;
+                      final String raca = _controladorRaca.text;
+                      final String classe = _controladorClasse.text;
+                      final String regiao = _controladorRegiao.text;
+                      final String dano = _controladorDano.text;
+                      final String ultimate = _controladorUltimate.text;
+                      final Campeao novoCampeao = Campeao(0, nome, raca, classe, regiao, dano, ultimate);
+                      save(novoCampeao).then((id) {
+                        Navigator.pop(context, novoCampeao);
+                      });
+                    },
+                    child: const Text(
+                      'Salvar',
+                      style: TextStyle(
+                        color: Color.fromARGB(251, 254, 141, 1),
+                        fontSize: 20.0,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -259,13 +315,17 @@ class _FormularioCampeoesState extends State<FormularioCampeoes> {
 class Campeao {
   final int id;
   final String nome;
-  final int? numeroConta;
+  final String raca;
+  final String classe;
+  final String regiao;
+  final String dano;
+  final String ultimate;
   // adicionar atributos
-  Campeao(this.id, this.nome, this.numeroConta);
+  Campeao(this.id, this.nome, this.raca,this.classe,this.regiao,this.dano,this.ultimate);
 
   @override
   String toString() {
-    return 'Campeao{id: $id, nome: $nome, numeroConta: $numeroConta}';
+    return 'Campeao{id: $id, nome: $nome, raca: $raca, classe: $classe, regiao: $regiao, dano: $dano, ultimate: $ultimate}';
   }
 }
 
@@ -282,9 +342,31 @@ class _CampeaoItem extends StatelessWidget {
           campeao.nome,
           style: const TextStyle(fontSize: 24.0),
         ),
-        subtitle: Text(
-          campeao.numeroConta.toString(),
-          style: const TextStyle(fontSize: 16.0),
+        subtitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              campeao.raca.toString(),
+              style: const TextStyle(fontSize: 16.0),
+            ),
+            Text(
+              campeao.classe.toString(),
+              style: const TextStyle(fontSize: 16.0),
+            ),
+            // Adicione mais atributos aqui
+            Text(
+              campeao.regiao.toString(),
+              style: const TextStyle(fontSize: 16.0),
+            ),
+            Text(
+              campeao.dano.toString(),
+              style: const TextStyle(fontSize: 16.0),
+            ),
+            Text(
+              campeao.ultimate.toString(),
+              style: const TextStyle(fontSize: 16.0),
+            ),
+          ],
         ),
       ),
     );

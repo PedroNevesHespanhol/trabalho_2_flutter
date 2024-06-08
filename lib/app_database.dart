@@ -7,15 +7,19 @@ Future<Database> createDatabase() {
     (dbPath) {
       final String path = join(
         dbPath,
-        'bankapp.db',
+        'lolapp.db',
       );
       return openDatabase(
         path,
         onCreate: (db, version) {
-          db.execute('CREATE TABLE campeaos('
+          db.execute('CREATE TABLE campeoes('
               'id INTEGER PRIMARY KEY,'
               'nome TEXT,'
-              'numeroConta INTEGER)');
+              'raca TEXT,'
+              'classe TEXT,'
+              'regiao TEXT,'
+              'dano TEXT,'
+              'ultimate TEXT)');
         },
         version: 1,
         // onDowngrade: onDatabaseDowngradeDelete,
@@ -30,8 +34,12 @@ Future<int> save(Campeao campeao) {
       final Map<String, dynamic> campeaoMap = {};
       // campeaoMap['id'] = campeao.id;
       campeaoMap['nome'] = campeao.nome;
-      campeaoMap['numeroConta'] = campeao.numeroConta;
-      return db.insert('campeaos', campeaoMap);
+      campeaoMap['raca'] = campeao.raca;
+      campeaoMap['classe'] = campeao.classe;
+      campeaoMap['regiao'] = campeao.regiao;
+      campeaoMap['dano'] = campeao.dano;
+      campeaoMap['ultimate'] = campeao.ultimate;
+      return db.insert('campeoes', campeaoMap);
     },
   );
 }
@@ -39,18 +47,22 @@ Future<int> save(Campeao campeao) {
 Future<List<Campeao>> findAll() {
   return createDatabase().then(
     (db) {
-      return db.query('campeaos').then(
+      return db.query('campeoes').then(
         (maps) {
-          final List<Campeao> campeaos = [];
+          final List<Campeao> campeoes = [];
           for (Map<String, dynamic> map in maps) {
             final Campeao campeao = Campeao(
               map['id'],
               map['nome'],
-              map['numeroConta'],
+              map['raca'],
+              map['classe'],
+              map['regiao'],
+              map['dano'],
+              map['ultimate']
             );
-            campeaos.add(campeao);
+            campeoes.add(campeao);
           }
-          return campeaos;
+          return campeoes;
         },
       );
     },
